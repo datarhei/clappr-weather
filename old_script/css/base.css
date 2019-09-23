@@ -1,0 +1,142 @@
+body {
+  background-color: #333333;
+  margin: 0px 0px 0px 0px;
+}
+@font-face {
+  font-family: GeogrotesqueRegular;
+  font-weight: 400;
+  font-style: normal;
+  src: url(../fonts/geogtq-rg-webfont.eot);
+  src: url(../fonts/geogtq-rg-webfont.eot?#iefix) format("embedded-opentype"), url(../fonts/geogtq-rg-webfont.woff) format("woff"), url(../fonts/geogtq-rg-webfont.ttf) format("truetype"), url(../fonts/geogtq-rg-webfont.svg#GeogrotesqueRegular) format("svg")
+}
+@font-face {
+  font-family: GeogrotesqueSemiBold;
+  font-weight: 400;
+  font-style: normal;
+  src: url(../fonts/geogtq-sb-webfont.eot);
+  src: url(../fonts/geogtq-sb-webfont.eot?#iefix) format("embedded-opentype"), url(../fonts/geogtq-sb-webfont.woff) format("woff"), url(../fonts/geogtq-sb-webfont.ttf) format("truetype"), url(../fonts/geogtq-sb-webfont.svg#GeogrotesqueSemiBold) format("svg")
+}
+@font-face {
+  font-family: icomoon;
+  font-weight: 400;
+  font-style: normal;
+  src: url(fonts/icomoon.eot);
+  src: url(fonts/icomoon.eot?#iefix) format("embedded-opentype"), url(../fonts/icomoon.svg#icomoon) format("svg"), url(../fonts/icomoon.woff) format("woff"), url(../fonts/icomoon.ttf) format("truetype")
+}
+[data-icon]:before {
+  font-family: icomoon;
+  content: attr(data-icon);
+  speak: none;
+  font-weight: 400;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased
+}
+#liveweather-container {
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0px;
+}
+#liveweather-container ul {
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+#liveweather-container ul li {
+  display: table-cell;
+  vertical-align: middle;
+  height: 2.1875em;
+}
+#liveweather-container ul li p {
+  display: table-cell;
+  vertical-align: middle;
+  font-family: GeogrotesqueRegular;
+  color: #fff;
+}
+#liveweather-container ul li div.wrapper {
+  height: 100%;
+  margin-right: 1px;
+  position: relative;
+}
+#liveweather-container ul li div.content {
+  display: table;
+  height: 100%;
+}
+#liveweather-container .pressure p:before,
+#liveweather-container .rain p:before,
+#liveweather-container .temperature p:before,
+#liveweather-container .uv p:before,
+#liveweather-container .wind-direction p:before,
+#liveweather-container .wind p:before {
+  position: absolute
+}
+#liveweather-container .live p {
+  text-align: center;
+  font-family: GeogrotesqueSemiBold
+}
+#liveweather-container .temperature p {
+  font-size: .875em;
+  padding-right: .71429em;
+  padding-left: 2.5em
+}
+#liveweather-container .temperature p:before {
+  font-size: 1.35714em;
+  left: .71429em;
+  top: .42857em
+}
+#liveweather-container .rain p {
+  font-size: .875em;
+  padding-left: 3.07143em;
+  padding-right: .71429em
+}
+#liveweather-container .rain p:before {
+  font-size: 1.35714em;
+  left: .71429em;
+  top: .42857em
+}
+#liveweather-container .wind p {
+  font-size: .75em;
+  padding-left: 3.25em;
+  padding-right: .83333em
+}
+#liveweather-container .wind p:before {
+  font-size: 1.35714em;
+  left: .71429em;
+  top: .64286em
+}
+#liveweather-container .wind-direction p {
+  font-size: .75em;
+  padding-left: 3.25em;
+  padding-right: .83333em
+}
+#liveweather-container .wind-direction p:before {
+  font-size: 1.35714em;
+  left: .71429em;
+  top: .64286em
+}
+#liveweather-container .pressure p {
+  font-size: .75em;
+  padding-left: 3.33333em;
+  padding-right: .83333em
+}
+#liveweather-container .pressure p:before {
+  font-size: 1.66667em;
+  left: .83333em;
+  top: .33333em
+}
+#liveweather-container .uv p {
+  font-size: .75em;
+  padding-left: 3.33333em;
+  padding-right: .83333em
+}
+#liveweather-container .uv p:before {
+  font-size: 1.25em;
+  left: .83333em;
+  top: .58333em
+}
+#liveweather-container .tidal p {
+  font-size: .875em;
+  padding-left: 2.5em;
+  padding-right: .71429em
+}
