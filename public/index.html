@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<script type="text/javascript" charset="utf-8" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../dist/weather.js"></script>
+	<title>clappr-weather-plugin Test Page</title>
+	<script type="text/javascript" charset="utf-8">
+	window.onload = function() {
+		var player = new Clappr.Player({
+			source: 'https://cdn.livespotting.com/windit-edge/smil:vv28.smil/playlist.m3u8',
+			parentId: '#player',
+
+			plugins: [Weather],
+
+			weatherConfig: {
+				station: 82
+			},
+
+			width: 640, height: 360,
+			hideMediaControl: false,
+			autoPlay: true
+		});
+	}
+	</script>
+</head>
+<body>
+	<div align="center">
+	<div id="player">
+	</div>
+	</div>
+</body>
+</html>

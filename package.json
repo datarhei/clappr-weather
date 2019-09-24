@@ -1,0 +1,52 @@
+{
+	"name": "weather",
+	"description": "A simple plugin for Clappr that shows weather data.",
+	"version": "0.1.0",
+	"license": "MIT",
+	"repository": "datarhei/clappr-weather-plugin",
+	"main": "dist/weather.js",
+	"scripts": {
+		"release": "node_modules/.bin/webpack --progress --optimize-minimize --mode=production --output-filename weather.min.js",
+		"build": "node_modules/.bin/webpack --progress",
+		"watch": "node_modules/.bin/webpack --progress --watch",
+		"test": "npm run lint && echo 'No tests configured - aborting.'",
+		"lint": "eslint *.js src/",
+		"lint:fix": "npm run lint -- --fix",
+		"start": "node_modules/.bin/webpack-dev-server --content-base public/ --output-public-path /latest --hot",
+		"lock": "rm -rf npm-shrinkwrap.json node_modules && npm install --silent && npm shrinkwrap"
+	},
+	"author": {
+		"name": "Ingo Oppermann",
+		"email": "open@datarhei.org",
+		"url": "https://github.com/datarhei"
+	},
+	"keywords": [
+		"clappr",
+		"plugin"
+	],
+	"peerDependencies": {
+		"clappr": "0.x"
+	},
+	"devDependencies": {
+		"babel-core": "^6.26.0",
+		"babel-loader": "^7.1.3",
+		"babel-plugin-add-module-exports": "^0.2.1",
+		"babel-plugin-transform-es2015-classes": "^6.24.1",
+		"babel-plugin-transform-runtime": "^6.23.0",
+		"babel-preset-env": "^1.6.1",
+		"clappr": "^0.2.92",
+		"css-loader": "^1.0.0",
+		"eslint": "^5.1.0",
+		"html-loader": "^0.5.5",
+		"node-sass": "^4.9.2",
+		"postcss-loader": "^2.1.1",
+		"sass-loader": "^7.0.3",
+		"style-loader": "^0.21.0",
+		"webpack": "^4.16.1",
+		"webpack-cli": "^3.1.0",
+		"webpack-dev-server": "^3.1.4"
+	},
+	"dependencies": {
+		"autoprefixer": "^9.0.0"
+	}
+}
