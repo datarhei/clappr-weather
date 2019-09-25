@@ -69,9 +69,9 @@ export default class Weather extends UICorePlugin {
 		this.hasData = true;
 
 		this.$el.html(this.template({
-			temperature: data.temperature,
-			rain: data.rain,
-			winddirection: data.winddirection_txt,
+			temperature: data.temperature.toFixed(1),
+			rain: data.rain.toFixed(1),
+			winddirection: data.winddirection + '° ' + data.winddirection_txt,
 			windspeed: data['windspeed-ms']
 		}));
 	    this.$el.append(Styler.getStyleFor(pluginStyle));
