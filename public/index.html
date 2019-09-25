@@ -8,26 +8,27 @@
 	<script type="text/javascript" charset="utf-8">
 	window.onload = function() {
 		var player = new Clappr.Player({
-			source: 'https://cdn.livespotting.com/windit-edge/smil:vv28.smil/playlist.m3u8',
+			source: 'https://cdn.livespotting.com/windit-edge/smil:LS_31d7b.smil/playlist.m3u8',
 			parentId: '#player',
 
 			plugins: [Weather],
 
 			weatherConfig: {
-				station: 82
+				station: 38,
+				url: './[station].json',
+				refresh: 10
 			},
 
 			width: 640, height: 360,
 			hideMediaControl: false,
-			autoPlay: true
+			autoPlay: false
 		});
 	}
 	</script>
 </head>
 <body>
 	<div align="center">
-	<div id="player">
-	</div>
+		<div id="player"></div>
 	</div>
 </body>
 </html>

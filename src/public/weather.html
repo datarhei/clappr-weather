@@ -1,1 +1,25 @@
-<div class="weather" data-weather></div>
+<ul>
+	<li class="live">
+		<p>LIVE</p>
+	</li>
+	<% if (temperature !== undefined) { %>
+	<li class="temperature" title="Temperatur">
+		<p data-icon="-"><%= temperature %> °C</p>
+	</li>
+	<% }; %>
+	<% if (rain !== undefined) { %>
+	<li class="rain" title="Regenmenge">
+		<p data-icon="."><%= rain %> mm</p>
+	</li>
+	<% }; %>
+	<% if (winddirection !== undefined) { %>
+	<li class="wind-direction" title="Windrichtung">
+		<p data-icon="/"><%= winddirection %></p>
+	</li>
+	<% }; %>
+	<% if (windspeed !== undefined) { %>
+	<li class="wind" title="Windgeschwindigkeit">
+		<p data-icon="/"><%= windspeed %>  m/s</p>
+	</li>
+	<% }; %>
+</ul>

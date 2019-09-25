@@ -1,12 +1,24 @@
 .weather[data-weather] {
-	display: block;
-	justify-content: center;
-	align-items: center;
+	display: none;
 	position: absolute;
-	height: 40px;
+	height: 20px;
 	width: 100%;
 	z-index: 998;
 	top: 0;
 	left: 0;
-	background-color: #00ff00;
+	background-color: #ddd;
+
+	ul {
+		margin: 0;
+		padding: 0;
+		display: table;
+		width: 100%;
+
+		li {
+			display: table-cell;
+  		text-align: center;
+			margin-right: 7px;
+			white-space: nowrap;
+		}
+	}
 }
