@@ -1,17 +1,14 @@
 # clappr-weather
 
-Displays the current weather information in an overlay at the top of the player.
+Displays the current weather information in an overlay at the top of the player. The weather data is only displayed when
+playing and hides when stopped.
 
-## What is there already?
-
-- An element is created that can be used to fill in the data (`src/public/weather.html` and `src/public/style.scss`)
-- XHR request to load the data.
-- Displaying the weather data.
-- Weather data is only displayed when playing and hides when stopped.
+![Snapshot](../master/screenshot.jpg)
 
 ## TODO
 
 - ICONS!!!!
+- Nicer styling
 
 ## Config
 
@@ -90,7 +87,7 @@ If the server where you load the data from delivers the data in a different form
 that will transform the output into the expected form. The function expects one parameter which is a JavaScript object and will return
 an object in the above mentioned form. The default for the rewrite function is `null` which means that no rewrite will happen.
 
-Here is an example that rewrites the data from openweathermap.org:
+Here is an example that rewrites the data from [openweathermap.org](https://openweathermap.org/api):
 
 ```js
 var player = new Clappr.Player({
