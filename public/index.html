@@ -8,15 +8,41 @@
 	<script type="text/javascript" charset="utf-8">
 	window.onload = function() {
 		var player = new Clappr.Player({
-			source: 'https://cdn.livespotting.com/windit-edge/smil:LS_31d7b.smil/playlist.m3u8',
+			source: 'https://ch-fra-n8.livespotting.com/vpu/qvciam2t/nsav1jnq_720.m3u8',
 			parentId: '#player',
 
 			plugins: [Weather],
 
 			weatherConfig: {
-				station: 38,
-				url: './[station].json',
-				refresh: 10
+				url: 'http://127.0.0.1:8080/data/weather.json',
+				rewrite: function(data) {
+					return data;
+					var d = {
+						"windspeed_ms": data.wind.speed,
+						"winddirection": data.wind.deg,
+						"temperature_c": data.main.temp,
+						"humidity": data.main.humidity,
+						"pressure_hpa": data.main.pressure,
+						"precipitation": {
+							"value_mm": 0.0,
+							"mode": "none",
+						},
+						"timestamp": data.dt
+					};
+
+					if ('rain' in data) {
+						d.precipitation.value_mm = data.rain.rain_1h;
+						d.precipitation.mode = "rain";
+					}
+					else if ('snow' in data) {
+						d.precipitation.value_mm = data.snow.snow_1h;
+						d.precipitation.mode = "snow";
+					}
+
+					return d;
+				},
+				refresh: 10,
+				units: 'imperial'
 			},
 
 			width: 640, height: 360,

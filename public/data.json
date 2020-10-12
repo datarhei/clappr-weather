@@ -1,0 +1,12 @@
+{
+	"windspeed_ms": 2.7,
+	"winddirection": 253,
+	"temperature_c": 10.5,
+	"humidity": 81,
+	"pressure_hpa": 1021.77,
+	"precipitation": {
+		"value_mm": 5.3,
+		"mode": "rain"
+	},
+	"timestamp": 1602503869
+}
