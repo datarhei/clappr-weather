@@ -110,7 +110,10 @@ export default class Weather extends UICorePlugin {
 			windspeed = data.windspeed_ms.toFixed(1) + ' m/s';
 		}
 
-		precipitation = data.precipitation.value_mm.toFixed(1) + ' mm';
+		precipitation = {
+			value: data.precipitation.value_mm.toFixed(1) + ' mm',
+			mode: data.precipitation.mode
+		};
 		pressure = data.pressure_hpa.toFixed(2) + ' hpa';
 		humidity = data.humidity.toFixed(0) + '%';
 
@@ -178,8 +181,9 @@ export default class Weather extends UICorePlugin {
 		let self = this;
 
 		let r = new XMLHttpRequest();
+		let url = this.url + (this.url.indexOf('?') !== -1 ? '&' : '?') + Date.now();
 
-		r.open('GET', this.url);
+		r.open('GET', url);
 		r.onload = function() {
 			if (r.readyState === r.DONE) {
 				if (r.status === 200) {

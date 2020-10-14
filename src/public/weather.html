@@ -8,9 +8,16 @@
 	</li>
 	<% }; %>
 	<% if (precipitation !== undefined) { %>
-	<li class="rain">
-		🌧️ <%= precipitation %></p>
-	</li>
+		<% if (precipitation.mode === 'rain') { %>
+		<li class="rain">
+			🌧️ <%= precipitation.value %></p>
+		</li>
+		<% }; %>
+		<% if (precipitation.mode === 'snow') { %>
+		<li class="snow">
+			🌨️ <%= precipitation.value %></p>
+		</li>
+		<% }; %>
 	<% }; %>
 	<% if (winddirection !== undefined) { %>
 	<li class="wind-direction">
