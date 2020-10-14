@@ -2,7 +2,7 @@ import { Events, Styler, UICorePlugin, template } from 'clappr';
 import pluginHtml from './public/weather.html';
 import pluginStyle from './public/style.scss';
 
-const VERSION = '0.1.0';
+const VERSION = '0.2.2';
 const DEFAULT_URL = null;
 const DEFAULT_REFRESH = 5;
 const DEFAULT_REWRITE = null;
