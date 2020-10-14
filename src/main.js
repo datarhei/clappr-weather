@@ -111,9 +111,10 @@ export default class Weather extends UICorePlugin {
 		}
 
 		precipitation = {
-			value: data.precipitation.value_mm.toFixed(1) + ' mm',
+			value: ((data.precipitation.mode === 'none') ? '0' : data.precipitation.value_mm.toFixed(1)) + ' mm',
 			mode: data.precipitation.mode
 		};
+
 		pressure = data.pressure_hpa.toFixed(2) + ' hpa';
 		humidity = data.humidity.toFixed(0) + '%';
 
