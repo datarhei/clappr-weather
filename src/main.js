@@ -1,4 +1,4 @@
-import { Events, Styler, UIContainerPlugin, template, $ } from 'clappr';
+import { Events, UIContainerPlugin, template, $ } from 'clappr';
 import weatherHTML from './public/weather.html';
 import './public/style.scss';
 
@@ -8,9 +8,12 @@ const DEFAULT_REWRITE = null;
 const DEFAULT_UNITS = 'metric';
 
 export default class Weather extends UIContainerPlugin {
-	get name() { return 'weather' }
-	get supportedVersion() { return { min: CLAPPR_CORE_VERSION } }
-	get template() { return template(weatherHTML) }
+	get name() {
+		return 'weather';
+	}
+	get template() {
+		return template(weatherHTML);
+	}
 
 	constructor(container) {
 		super(container);
@@ -21,10 +24,10 @@ export default class Weather extends UIContainerPlugin {
 		this.listenTo(this.container, Events.CONTAINER_PLAY, () => {
 			this.show();
 		});
-	    this.listenTo(this.container, Events.CONTAINER_STOP, () => {
-	    	this.hide();
-	    });
-	    this.listenTo(this.container, Events.CONTAINER_OPTIONS_CHANGE, this.configure)
+		this.listenTo(this.container, Events.CONTAINER_STOP, () => {
+			this.hide();
+		});
+		this.listenTo(this.container, Events.CONTAINER_OPTIONS_CHANGE, this.configure);
 	}
 
 	configure() {
@@ -75,7 +78,7 @@ export default class Weather extends UIContainerPlugin {
 	}
 
 	enable() {
-		this.bindEvents()
+		this.bindEvents();
 		this.enabled = true;
 
 		this.load();
@@ -96,7 +99,7 @@ export default class Weather extends UIContainerPlugin {
 		let humidity = undefined;
 		let timestamp = undefined;
 
-		if(this.units === 'imperial') {
+		if (this.units === 'imperial') {
 			temperature = this._convertToFahrenheit(data.temperature_c).toFixed(1) + ' °F';
 			winddirection = data.winddirection.toFixed(0) + '° ' + this._getHeading(data.winddirection);
 			windspeed = this._convertToMPH(data.windspeed_ms).toFixed(1) + ' mph';
@@ -135,7 +138,7 @@ export default class Weather extends UIContainerPlugin {
 	}
 
 	_getHeading(_direction) {
-		if(_direction < 0 || _direction > 360) {
+		if (_direction < 0 || _direction > 360) {
 			return '--';
 		}
 
@@ -145,7 +148,7 @@ export default class Weather extends UIContainerPlugin {
 		const step = Math.floor(360 / directions.length);
 		let i = Math.floor(step / 2);
 
-		if(_direction <= i || _direction >= 360 - i) {
+		if (_direction <= i || _direction >= 360 - i) {
 			return 'N';
 		}
 
@@ -192,7 +195,8 @@ export default class Weather extends UIContainerPlugin {
 					let data = null;
 					try {
 						data = JSON.parse(text);
-					} catch (error) {
+					}
+					catch (error) {
 						data = text;
 					}
 
