@@ -11,8 +11,16 @@ export default class Weather extends UIContainerPlugin {
 	get name() {
 		return 'weather';
 	}
+
 	get template() {
 		return template(weatherHTML);
+	}
+
+	get attributes() {
+		return {
+			'class': this.name,
+			'data-weather': ''
+		};
 	}
 
 	constructor(container) {
@@ -77,10 +85,17 @@ export default class Weather extends UIContainerPlugin {
 		return this;
 	}
 
+	disable() {
+		this.enabled = false;
+
+		this.hide();
+	}
+
 	enable() {
-		this.bindEvents();
+		//this.bindEvents();
 		this.enabled = true;
 
+		this.show();
 		this.load();
 	}
 
@@ -161,7 +176,7 @@ export default class Weather extends UIContainerPlugin {
 	}
 
 	show() {
-		if (this.hasData == true) {
+		if (this.enabled == true && this.hasData == true) {
 			$('.clappr-watermark[data-watermark-top-left]').css('top', '50px');
 			$('.clappr-watermark[data-watermark-top-right]').css('top', '50px');
 			this.$el.show();

@@ -1,7 +1,7 @@
 {
 	"name": "weather",
 	"description": "A simple plugin for Clappr that shows weather data.",
-	"version": "0.2.3",
+	"version": "0.2.4",
 	"license": "MIT",
 	"repository": "datarhei/clappr-weather-plugin",
 	"main": "dist/weather.js",
