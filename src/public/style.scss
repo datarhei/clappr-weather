@@ -1,5 +1,4 @@
 .weather[data-weather] {
-	display: none;
 	position: absolute;
 	height: 20px;
 	width: 100%;
@@ -15,7 +14,7 @@
 
 		li {
 			display: inline-table;
-  			text-align: center;
+  		text-align: center;
 			white-space: nowrap;
 			background-color: rgba(0,0,0,0.8);
 			color: #fff;

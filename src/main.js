@@ -1,41 +1,42 @@
-import { Events, Styler, UICorePlugin, template } from 'clappr';
-import pluginHtml from './public/weather.html';
-import pluginStyle from './public/style.scss';
+import { Events, Styler, UIContainerPlugin, template, $ } from 'clappr';
+import weatherHTML from './public/weather.html';
+import './public/style.scss';
 
-const VERSION = '0.2.2';
 const DEFAULT_URL = null;
 const DEFAULT_REFRESH = 5;
 const DEFAULT_REWRITE = null;
 const DEFAULT_UNITS = 'metric';
 
-export default class Weather extends UICorePlugin {
-	bindEvents() {
-		this.listenTo(this.core, Events.CORE_ACTIVE_CONTAINER_CHANGED, () => {
-			this.core.activeContainer.$el.append(this.el);
+export default class Weather extends UIContainerPlugin {
+	get name() { return 'weather' }
+	get supportedVersion() { return { min: CLAPPR_CORE_VERSION } }
+	get template() { return template(weatherHTML) }
 
-			this.playback = this.core.getCurrentPlayback();
-			this.listenTo(this.playback, Events.PLAYBACK_PLAY, () => {
-				this.isPlaying = true;
-				this.show();
-			});
-			this.listenTo(this.playback, Events.PLAYBACK_STOP, () => {
-				this.isPlaying = false;
-				this.show();
-			});
-		});
-		this.listenToOnce(this.core, Events.CORE_READY, this.onCoreReady);
+	constructor(container) {
+		super(container);
+		this.configure();
 	}
 
-	onCoreReady() {
+	bindEvents() {
+		this.listenTo(this.container, Events.CONTAINER_PLAY, () => {
+			this.show();
+		});
+	    this.listenTo(this.container, Events.CONTAINER_STOP, () => {
+	    	this.hide();
+	    });
+	    this.listenTo(this.container, Events.CONTAINER_OPTIONS_CHANGE, this.configure)
+	}
+
+	configure() {
 		this.hasData = false;
-		this.isPlaying = false;
 
 		this.url = DEFAULT_URL;
 		this.rewrite = DEFAULT_REWRITE;
 		this.refresh = DEFAULT_REFRESH;
 		this.units = DEFAULT_UNITS;
+		this.data = null;
 
-		const cfg = this.core.options.weatherConfig || {};
+		const cfg = this.options.weatherConfig || {};
 
 		if ('rewrite' in cfg) {
 			if (typeof cfg.rewrite === 'function') {
@@ -57,38 +58,34 @@ export default class Weather extends UICorePlugin {
 			}
 		}
 
-		this.loadData();
+		this.load();
+		this.render();
 	}
 
-	static get version() {
-		return VERSION;
+	destroy() {
+		this.$el.remove();
 	}
 
-	get name() {
-		return 'weather';
+	render() {
+		this.$el.hide();
+
+		this.container.$el.append(this.$el);
+
+		return this;
 	}
 
-	get template() {
-		return template(pluginHtml);
+	enable() {
+		this.bindEvents()
+		this.enabled = true;
+
+		this.load();
 	}
 
-	get attributes() {
-		return {
-			'class': this.name,
-			'data-weather': ''
-		};
-	}
-
-	get events() {
-		return {};
-	}
-
-	setData(data) {
+	update(data) {
 		if (data === null) {
 			return;
 		}
 
-		this.data = data;
 		this.hasData = true;
 
 		let temperature = undefined;
@@ -127,9 +124,6 @@ export default class Weather extends UICorePlugin {
 			humidity: humidity,
 			timestamp: timestamp,
 		}));
-		this.$el.append(Styler.getStyleFor(pluginStyle));
-
-		this.show();
 	}
 
 	_convertToFahrenheit(_value) {
@@ -164,18 +158,23 @@ export default class Weather extends UICorePlugin {
 	}
 
 	show() {
-		if (this.hasData == true && this.isPlaying == true) {
+		if (this.hasData == true) {
+			$('.clappr-watermark[data-watermark-top-left]').css('top', '50px');
+			$('.clappr-watermark[data-watermark-top-right]').css('top', '50px');
 			this.$el.show();
-		}
-		else {
-			this.$el.hide();
 		}
 
 		return;
 	}
 
-	loadData() {
-		if (!this.url) {
+	hide() {
+		this.$el.hide();
+		$('.clappr-watermark[data-watermark-top-left]').css('top', '10px');
+		$('.clappr-watermark[data-watermark-top-right]').css('top', '10px');
+	}
+
+	load() {
+		if (!this.url || this.enabled === false) {
 			return;
 		}
 
@@ -201,12 +200,12 @@ export default class Weather extends UICorePlugin {
 						data = self.rewrite(data);
 					}
 
-					self.setData(data);
+					self.update(data);
 				}
 
 				if (self.refresh > 0) {
 					setTimeout(function() {
-						self.loadData();
+						self.load();
 					}, self.refresh * 1000);
 				}
 			}
