@@ -1,6 +1,7 @@
 import { Events, UIContainerPlugin, template, $ } from 'clappr';
 import weatherHTML from './public/weather.html';
 import './public/style.scss';
+import icon from './public/icon.svg';
 
 const DEFAULT_URL = null;
 const DEFAULT_REFRESH = 5;
@@ -230,5 +231,42 @@ export default class Weather extends UIContainerPlugin {
 			}
 		};
 		r.send();
+	}
+
+	// PluginControl interface
+	pluginControl() {
+		let self = this;
+
+		if (this.hasData === false) {
+			return null;
+		}
+
+		return {
+			icon: function() {
+				return icon;
+			},
+			name: function(lang = 'en') {
+				let name = 'Weather';
+
+				switch (lang) {
+				case 'de': name = 'Wetter'; break;
+				}
+
+				return name;
+			},
+			toggle: function() {
+				if (self.enabled === true) {
+					self.disable();
+				}
+				else {
+					self.enable();
+				}
+
+				return self.enabled;
+			},
+			toggled: function() {
+				return self.enabled;
+			}
+		};
 	}
 }

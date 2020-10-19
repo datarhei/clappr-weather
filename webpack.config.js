@@ -35,6 +35,15 @@ module.exports = {
 			{
 				test: /\.html/, loader: 'html-loader?minimize=false'
 			},
+			{
+				test: /\.svg$/i,
+				use: [
+					{
+						loader: 'url-loader',
+
+					},
+				],
+			},
 		],
 	},
 	resolve: {
