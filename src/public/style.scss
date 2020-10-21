@@ -5,6 +5,7 @@
 	z-index: 11;
 	top: 0;
 	left: 0;
+	transition: opacity 0.75s ease;
 
 	ul {
 		margin: 0;
@@ -14,7 +15,7 @@
 
 		li {
 			display: inline-table;
-  		text-align: center;
+  			text-align: center;
 			white-space: nowrap;
 			background-color: rgba(0,0,0,0.8);
 			color: #fff;
