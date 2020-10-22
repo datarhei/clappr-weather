@@ -2,6 +2,7 @@ import { Events, UIContainerPlugin, template, $ } from 'clappr';
 import weatherHTML from './public/weather.html';
 import './public/style.scss';
 import icon from './public/icon.svg';
+import icon_disabled from './public/icon_disabled.svg';
 
 const DEFAULT_URL = null;
 const DEFAULT_REFRESH = 5;
@@ -245,7 +246,12 @@ export default class Weather extends UIContainerPlugin {
 
 		return {
 			icon: function() {
-				return icon;
+				if (self.enabled === true) {
+					return icon;
+				}
+				else {
+					return icon_disabled;
+				}
 			},
 			name: function(lang = 'en') {
 				let name = 'Weather';
