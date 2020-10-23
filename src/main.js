@@ -179,6 +179,7 @@ export default class Weather extends UIContainerPlugin {
 
 	show() {
 		if (this.enabled == true && this.hasData == true) {
+			$('.clappr-watermark[data-watermark]').css('transition', 'top .4s ease-out');
 			$('.clappr-watermark[data-watermark-top-left]').css('top', '50px');
 			$('.clappr-watermark[data-watermark-top-right]').css('top', '50px');
 			this.$el.show();
@@ -191,6 +192,7 @@ export default class Weather extends UIContainerPlugin {
 	hide() {
 		this.$el.css('opacity', 0);
 		this.$el.hide();
+		$('.clappr-watermark[data-watermark]').css('transition', 'top .4s ease-out');
 		$('.clappr-watermark[data-watermark-top-left]').css('top', '10px');
 		$('.clappr-watermark[data-watermark-top-right]').css('top', '10px');
 	}
