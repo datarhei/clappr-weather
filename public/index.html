@@ -8,13 +8,13 @@
 	<script type="text/javascript" charset="utf-8">
 	window.onload = function() {
 		var player = new Clappr.Player({
-			source: 'https://ch-fra-n8.livespotting.com/vpu/qvciam2t/nsav1jnq_720.m3u8',
+			source: 'https://cdn.livespotting.com/vpu/qvciam2t/nsav1jnq_720.m3u8',
 			parentId: '#player',
 
 			plugins: [Weather],
 
 			weatherConfig: {
-				url: 'http://127.0.0.1:8080/data/weather.json',
+				url: 'http://127.0.0.1:8080/weather.json',
 				refresh: 10
 			},
 

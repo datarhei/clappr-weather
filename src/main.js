@@ -1,4 +1,4 @@
-import { Events, UIContainerPlugin, template, $ } from 'clappr';
+import { Events, UIContainerPlugin, template, $ } from '@clappr/core';
 import weatherHTML from './public/weather.html';
 import './public/style.scss';
 import icon from './public/icon.svg';

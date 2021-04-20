@@ -1,19 +1,28 @@
 {
 	"name": "weather",
 	"description": "A simple plugin for Clappr that shows weather data.",
-	"version": "0.2.6",
+	"version": "0.2.7",
 	"license": "MIT",
-	"repository": "datarhei/clappr-weather-plugin",
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:datarhei/clappr-weather.git"
+	},
 	"main": "dist/weather.js",
 	"scripts": {
-		"release": "node_modules/.bin/webpack --progress --optimize-minimize --mode=production --output-filename weather.min.js",
-		"build": "node_modules/.bin/webpack --progress",
-		"watch": "node_modules/.bin/webpack --progress --watch",
-		"test": "npm run lint && echo 'No tests configured - aborting.'",
+		"bundle-check": "ANALYZE_BUNDLE=true rollup -c",
+		"release": "MINIMIZE=true rollup -c",
+		"build": "rollup -c",
+		"watch": "rollup -c --watch",
 		"lint": "eslint *.js src/",
 		"lint:fix": "npm run lint -- --fix",
-		"start": "node_modules/.bin/webpack-dev-server --content-base public/ --output-public-path /latest --hot",
-		"lock": "rm -rf npm-shrinkwrap.json node_modules && npm install --silent && npm shrinkwrap"
+		"start": "DEV=true rollup -c --watch"
+	},
+	"files": [
+		"/dist",
+		"/src"
+	],
+	"publishConfig": {
+		"access": "public"
 	},
 	"author": {
 		"name": "Ingo Oppermann",
@@ -22,32 +31,43 @@
 	},
 	"keywords": [
 		"clappr",
-		"plugin"
+		"plugin",
+		"weather"
 	],
+	"bugs": {
+		"url": "https://github.com/datarhei/clappr-marquee/issues"
+	},
+	"homepage": "https://github.com/datarhei/clappr-marquee",
 	"peerDependencies": {
-		"clappr": "0.x"
+		"@clappr/core": "^0.4.17"
 	},
 	"devDependencies": {
-		"babel-core": "^6.26.0",
-		"babel-loader": "^7.1.3",
-		"babel-plugin-add-module-exports": "^0.2.1",
-		"babel-plugin-transform-es2015-classes": "^6.24.1",
-		"babel-plugin-transform-runtime": "^6.23.0",
-		"babel-preset-env": "^1.6.1",
-		"clappr": "^0.2.92",
-		"css-loader": "^1.0.0",
-		"eslint": "^5.1.0",
-		"html-loader": "^0.5.5",
-		"node-sass": "^4.14.1",
-		"postcss-loader": "^2.1.1",
-		"sass-loader": "^7.0.3",
-		"style-loader": "^0.21.0",
-		"url-loader": "^4.1.1",
-		"webpack": "^4.44.2",
-		"webpack-cli": "^3.3.12",
-		"webpack-dev-server": "^3.11.0"
+		"@babel/core": "^7.12.10",
+		"@babel/preset-env": "^7.12.11",
+		"@clappr/core": "^0.4.17",
+		"@rollup/plugin-babel": "^5.3.0",
+		"@rollup/plugin-commonjs": "^17.0.0",
+		"@rollup/plugin-json": "^4.1.0",
+		"@rollup/plugin-node-resolve": "^11.0.1",
+		"@rollup/plugin-replace": "^2.3.4",
+		"autoprefixer": "9.8.6",
+		"eslint": "^7.17.0",
+		"node-sass": "^5.0.0",
+		"postcss": "^8.2.4",
+		"postcss-url": "^10.1.1",
+		"rollup": "^2.36.1",
+		"rollup-plugin-analyzer": "^4.0.0",
+		"rollup-plugin-html": "^0.2.1",
+		"rollup-plugin-livereload": "^2.0.0",
+		"rollup-plugin-postcss": "^4.0.0",
+		"rollup-plugin-serve": "^1.1.0",
+		"rollup-plugin-svg": "^2.0.0",
+		"rollup-plugin-terser": "^7.0.2"
 	},
-	"dependencies": {
-		"autoprefixer": "^9.8.6"
-	}
+	"browserslist": [
+		"last 2 versions",
+		">0.2%",
+		"not dead",
+		"not op_mini all"
+	]
 }
