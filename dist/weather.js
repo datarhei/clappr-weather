@@ -164,6 +164,18 @@
     }
 
     _createClass(Weather, [{
+      key: "version",
+      get: function get() {
+        return "0.2.9";
+      }
+    }, {
+      key: "supportedVersion",
+      get: function get() {
+        return {
+          min: "0.4.18"
+        };
+      }
+    }, {
       key: "name",
       get: function get() {
         return 'weather';

@@ -10,13 +10,10 @@ const DEFAULT_REWRITE = null;
 const DEFAULT_UNITS = 'metric';
 
 export default class Weather extends UIContainerPlugin {
-	get name() {
-		return 'weather';
-	}
-
-	get template() {
-		return template(weatherHTML);
-	}
+	get version() { return VERSION; }
+	get supportedVersion() { return { min: CLAPPR_CORE_VERSION }; }
+	get name() { return 'weather'; }
+	get template() { return template(weatherHTML); }
 
 	get attributes() {
 		return {
