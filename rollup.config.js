@@ -66,6 +66,11 @@ const output = [
 		sourcemap: true,
 		plugins: terser(),
 		globals: { '@clappr/core': 'Clappr' },
+	},
+	minimize && {
+		file: 'dist/weather.esm.js',
+		format: 'esm',
+		name: 'Weather',
 	}
 ];
 

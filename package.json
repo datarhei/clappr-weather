@@ -1,13 +1,14 @@
 {
 	"name": "weather",
 	"description": "A simple plugin for Clappr that shows weather data.",
-	"version": "0.2.7",
+	"version": "0.2.8",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
 		"url": "git@github.com:datarhei/clappr-weather.git"
 	},
 	"main": "dist/weather.js",
+	"module": "dist/weather.esm.js",
 	"scripts": {
 		"bundle-check": "ANALYZE_BUNDLE=true rollup -c",
 		"release": "MINIMIZE=true rollup -c",
@@ -35,9 +36,9 @@
 		"weather"
 	],
 	"bugs": {
-		"url": "https://github.com/datarhei/clappr-marquee/issues"
+		"url": "https://github.com/datarhei/clappr-weather/issues"
 	},
-	"homepage": "https://github.com/datarhei/clappr-marquee",
+	"homepage": "https://github.com/datarhei/clappr-weather",
 	"peerDependencies": {
 		"@clappr/core": "^0.4.17"
 	},
@@ -52,7 +53,6 @@
 		"@rollup/plugin-replace": "^2.3.4",
 		"autoprefixer": "9.8.6",
 		"eslint": "^7.17.0",
-		"node-sass": "^5.0.0",
 		"postcss": "^8.2.4",
 		"postcss-url": "^10.1.1",
 		"rollup": "^2.36.1",
@@ -62,7 +62,8 @@
 		"rollup-plugin-postcss": "^4.0.0",
 		"rollup-plugin-serve": "^1.1.0",
 		"rollup-plugin-svg": "^2.0.0",
-		"rollup-plugin-terser": "^7.0.2"
+		"rollup-plugin-terser": "^7.0.2",
+		"sass": "^1.32.11"
 	},
 	"browserslist": [
 		"last 2 versions",
