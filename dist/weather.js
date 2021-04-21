@@ -166,7 +166,7 @@
     _createClass(Weather, [{
       key: "version",
       get: function get() {
-        return "0.2.9";
+        return "0.2.10";
       }
     }, {
       key: "supportedVersion",
